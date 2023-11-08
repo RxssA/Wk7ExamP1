@@ -1,17 +1,17 @@
 package ie.atu.week7exam;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OrderController {
 
-    @PostMapping("{orderId}/{productId}/{quantity}/{customerId}")
-    public String getUser(@PathVariable int orderId, @PathVariable int productId, @PathVariable int quantity, @PathVariable int customerId)
+    @PostMapping("user")
+    public OrderStorage getUser(@RequestBody OrderStorage orderStorage)
     {
-        return "orderId " + orderId + "productId " + productId + " quantity" + quantity + "customerId " + customerId;
+        System.out.println("order ID "+ orderStorage.getOrderId);
+        System.out.println("product ID "+ orderStorage.getProductId);
+        System.out.println("quantity "+ orderStorage.getQuantity);
+        System.out.println("customer ID "+ orderStorage.getCustomerId);
+        return orderStorage;
     }
 }
